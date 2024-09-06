@@ -1,12 +1,13 @@
-import { newRectangle, Rectangle } from "./shapes/rectangle.js";
+import { Shape } from './shapes/shape.js'
 
-function newRenderer(rectangle: Rectangle) {
-    return {
-        draw() {
-            const area: number = rectangle.computeArea()
-            console.log("Shape drawn\n" + "Its area is " + area)
-        }
+function newRenderer (shape: Shape): {draw: () => void} {
+  return {
+    draw () {
+      const shapeType: string = shape.getType()
+      const area: number = shape.computeArea()
+      console.log(`${shapeType} drawn\n` + `Its area is ${area}`)
     }
+  }
 }
 
 export { newRenderer }
